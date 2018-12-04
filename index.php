@@ -4,6 +4,8 @@ require_once "vendor/autoload.php";
 require_once "connection.php";
 require_once "functions.php";
 require_once "all_links.php";
+require_once "database.php";
+
 use FastSimpleHTMLDom\Document;
 
 
@@ -31,7 +33,9 @@ $html = Document::file_get_html("https://www.astagiudiziaria.com/inserzioni/lott
 
 //$procedura = $html->find(".main-info .secondary-info:nth-child(4) strong")->plaintext;
 
-getDetailPage($con,$html);
+$detailsReturned = getDetailPage($con,$html);
+
+createDetailsPage($con,$detailsReturned);
 
 /*
  *
